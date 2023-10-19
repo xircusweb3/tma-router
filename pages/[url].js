@@ -1,6 +1,8 @@
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
 	const [ton] = useTonConnectUI()
 	const wallet = useTonWallet()
   const address = useTonAddress()
@@ -32,6 +34,7 @@ export default function Home() {
   return (
     <div>
       <h1>Xircus {`<>`} TON Mini Apps</h1>
+      <h1>{router?.query?.url}</h1>
       <TonConnectButton />
       { address && <div>Wallet Address: {address}</div> }
       <button onClick={handleDisconnect}>Disconnect</button>
