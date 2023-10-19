@@ -1,3 +1,4 @@
+import { Box, Button, Container, Divider, Heading, HStack, Spacer } from "@chakra-ui/react"
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
 import { useRouter } from 'next/router'
 
@@ -32,17 +33,20 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h1>Xircus {`<>`} TON Mini Apps</h1>
-      <h1>{router?.query?.url}</h1>
-      <TonConnectButton />
+    <Container>
+      <HStack py={4}>
+        <Spacer />
+        <TonConnectButton />
+      </HStack>
+      <Heading mb={4}>{router?.query?.url}</Heading>
       { address && <div>Wallet Address: {address}</div> }
-      <button onClick={handleDisconnect}>Disconnect</button>
+      <Button onClick={handleDisconnect}>Disconnect</Button>
       {
         wallet
-        ? <button onClick={handleSendTx}>Send Transaction</button>
-        : <button onClick={handleConnect}>Connect</button>
+        ? <Button onClick={handleSendTx}>Send Transaction</Button>
+        : <Button onClick={handleConnect}>Connect</Button>
       }
-    </div>
+      <Heading size="sm" mb={4}>Xircus {`<>`} TON Mini Apps</Heading>
+    </Container>
   )
 }
