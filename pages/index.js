@@ -6,7 +6,7 @@ export default function Home() {
   const address = useTonAddress()
 
   const handleSendTx = () => {
-    ton.sendTransaction({
+    ton?.sendTransaction({
       validUntil: Math.floor(Date.now() / 1000) + 600, // unix epoch seconds
       messages: [
         {
@@ -22,7 +22,11 @@ export default function Home() {
   }
 
   const handleDisconnect = () => {
-    ton.disconnect()
+    ton?.disconnect()
+  }
+
+  const handleConnect = () => {
+    ton?.connectWallet()
   }
 
   return (
@@ -34,7 +38,7 @@ export default function Home() {
       {
         wallet
         ? <button onClick={handleSendTx}>Send Transaction</button>
-        : <button onClick={ton.connectWallet}>Connect</button>
+        : <button onClick={handleConnect}>Connect</button>
       }
     </div>
   )
