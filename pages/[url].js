@@ -2,16 +2,20 @@ import { Box, Button, Center, Container, Divider, Heading, HStack, IconButton, S
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
 import { useRouter } from 'next/router'
 import { TbSun, TbMoon } from 'react-icons/tb'
-import { useViewport } from "@tma.js/sdk-react"
+import { useHapticFeedback, useInitData, useMainButton, useQRScanner, useViewport, useWebApp } from "@tma.js/sdk-react"
 import { useEffect } from "react"
 
 export default function Home() {
   const router = useRouter()
 	const [ton] = useTonConnectUI()
-	const wallet = useTonWallet()
   const address = useTonAddress()
   const { colorMode, toggleColorMode } = useColorMode()
   const viewport = useViewport()
+  const app = useWebApp()
+  const scanner = useQRScanner()
+  const mainButton = useMainButton()
+  const haptic = useHapticFeedback()
+  const initData = useInitData()
 
   useEffect(() => {
     viewport?.expand()
@@ -51,7 +55,13 @@ export default function Home() {
   }
 
   const handleCloseApp = () => {
-
+    app?.close()
+  }
+  
+  const handleOpenScan = async() => {
+    haptic?.impactOccurred('medium')
+    const data = await scanner?.open()
+    console.log("QR DATA", data)
   }
 
   return (
@@ -71,7 +81,7 @@ export default function Home() {
       <Heading>{router?.query?.url}</Heading>
       { address && <div>Wallet Address: {address}</div> }
       <Box p={6}>
-        <Button onClick={handleExpand}>Expand</Button>
+        <Button onClick={handleOpenScan}>Open Scanner</Button>
         <Button onClick={handleCloseApp}>Close</Button>
       </Box>
       <Box h={200} />
