@@ -7,6 +7,9 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider>
       <TonConnectUIProvider 
         manifestUrl="https://tma-router.vercel.app/tonconnect-manifest.json" 
+        actionsConfiguration={{
+          twaReturnUrl: "https://t.me/xircus_test_bot"
+        }}
         uiPreferences={{ theme: THEME.DARK }}> 
         <SDKProvider>
           <Component {...pageProps} />
