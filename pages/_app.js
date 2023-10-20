@@ -26,7 +26,7 @@ const Loader = ({ children }) => {
       actionsConfiguration={{
         twaReturnUrl: `https://t.me/xircus_test_bot${location?.pathname}`
       }}
-      uiPreferences={{ theme: THEME.DARK }}> 
+      uiPreferences={{ theme: THEME.DARK }}>
       {children}
     </TonConnectUIProvider>
   )
@@ -34,8 +34,6 @@ const Loader = ({ children }) => {
 }
 
 function MyApp({ Component, pageProps }) {
-
-
   return (
     <ChakraProvider>
         <SDKProvider>

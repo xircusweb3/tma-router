@@ -47,7 +47,7 @@ export default function Home() {
   }
 
   const handleCloseApp = () => {
-    
+
   }
 
   return (
@@ -55,7 +55,6 @@ export default function Home() {
       <Box bgGradient="linear(to-r, blue.500, purple.500, purple.500)" py={4} color="#fff">
         <Container>
           <HStack>
-            <Heading>{router?.query?.url}</Heading>
             <Spacer />
             <TonConnectButton />
             <IconButton 
@@ -65,6 +64,7 @@ export default function Home() {
         </Container>
       </Box>
       <Container>
+      <Heading>{router?.query?.url}</Heading>
       { address && <div>Wallet Address: {address}</div> }
       <Box p={6}>
         <Button onClick={handleExpand}>Expand</Button>
