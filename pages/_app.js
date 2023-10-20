@@ -1,5 +1,5 @@
 import { init } from '@tma.js/sdk'
-import { SDKProvider, useSDK } from '@tma.js/sdk-react'
+import { SDKProvider, useLaunchParams, useSDK } from '@tma.js/sdk-react'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import { Box, ChakraProvider } from '@chakra-ui/react'
 
@@ -24,7 +24,8 @@ const Loader = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
 
-
+  const location = global?.window && window?.location
+  console.log("LOCATION", location)
 
   return (
     <ChakraProvider>

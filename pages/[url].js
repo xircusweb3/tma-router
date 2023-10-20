@@ -42,8 +42,12 @@ export default function Home() {
     console.log("HEIGHT", viewport?.height)
     console.log("WIDTH", viewport?.width)
     console.log("EXPANDED", viewport?.isExpanded)
-    console.oog("STABLE", viewport?.stableHeight)
-    console.oog("STABLE STATUS", viewport?.isStable)    
+    console.log("STABLE", viewport?.stableHeight)
+    console.log("STABLE STATUS", viewport?.isStable)    
+  }
+
+  const handleCloseApp = () => {
+    
   }
 
   return (
@@ -64,6 +68,7 @@ export default function Home() {
       { address && <div>Wallet Address: {address}</div> }
       <Box p={6}>
         <Button onClick={handleExpand}>Expand</Button>
+        <Button onClick={handleCloseApp}>Close</Button>
       </Box>
       <Box h={200} />
       <Center>
