@@ -5,6 +5,8 @@ import { Box, ChakraProvider } from '@chakra-ui/react'
 
 const Loader = ({ children }) => {
   const { didInit, components, error } = useSDK()
+  const location = global?.window && window?.location
+  console.log("LOCATION", { location, components })
   
   if (!didInit) {
     return <Box>SDK Not Init</Box>
@@ -18,29 +20,29 @@ const Loader = ({ children }) => {
     return <Box>Warming up SDK</Box>
   }
 
-  return <>{children}</>
+  return (
+    <TonConnectUIProvider
+      manifestUrl="https://tma-router.vercel.app/tonconnect-manifest.json" 
+      actionsConfiguration={{
+        twaReturnUrl: `https://t.me/xircus_test_bot${location?.pathname}`
+      }}
+      uiPreferences={{ theme: THEME.DARK }}> 
+      {children}
+    </TonConnectUIProvider>
+  )
   
 }
 
 function MyApp({ Component, pageProps }) {
 
-  const location = global?.window && window?.location
-  console.log("LOCATION", location)
 
   return (
     <ChakraProvider>
-      <TonConnectUIProvider 
-        manifestUrl="https://tma-router.vercel.app/tonconnect-manifest.json" 
-        actionsConfiguration={{
-          twaReturnUrl: "https://t.me/xircus_test_bot/tribalzmarkettest"
-        }}
-        uiPreferences={{ theme: THEME.DARK }}> 
         <SDKProvider>
           <Loader>
             <Component {...pageProps} />
           </Loader>
         </SDKProvider>
-      </TonConnectUIProvider>
     </ChakraProvider>
   )
 }
