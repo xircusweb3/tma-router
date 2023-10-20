@@ -92,10 +92,10 @@ export default function Home() {
         </Container>
       </Box>
       <Container>
+        { address && <Box>TON Address: {address}</Box> }
         <VStack py={6} spacing={2}>
           <Heading>{url}</Heading>
           { initData && <Box>Username: @{initData?.user?.username}</Box> }
-          { address && <Box>TON Address: {address}</Box> }
           <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
           <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
         </VStack>
