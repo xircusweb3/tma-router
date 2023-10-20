@@ -24,6 +24,7 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     viewport?.expand()
     // backButton?.hide()
+    app?.sendData(`@${initData?.user?.username} connects to ${url}`)
     closing?.enableConfirmation()
   }, [])
 
