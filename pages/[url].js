@@ -7,6 +7,7 @@ import { useEffect } from "react"
 
 export default function Home() {
   const router = useRouter()
+  const url = router?.query?.url
 	const [ton] = useTonConnectUI()
   const address = useTonAddress()
   const { colorMode, toggleColorMode } = useColorMode()
@@ -22,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     viewport?.expand()
-    backButton?.hide()
+    // backButton?.hide()
     closing?.enableConfirmation()
   }, [])
 
@@ -72,9 +73,14 @@ export default function Home() {
 
   console.log("INIT DATA", initData, mainButton)
 
+  const gradients = {
+    'tribalzmarkettest': 'linear(to-r, blue.500, purple.500, purple.500)',
+    'basetonnfts': 'linear(to-r, black.500, orange.500, red.500)'
+  }
+
   return (
     <>
-      <Box bgGradient="linear(to-r, blue.500, purple.500, purple.500)" py={4} color="#fff">
+      <Box bgGradient={gradients[url]} py={4} color="#fff">
         <Container>
           <HStack>
             <Spacer />
@@ -86,8 +92,9 @@ export default function Home() {
         </Container>
       </Box>
       <Container>
-      <Heading>{router?.query?.url}</Heading>
-      { address && <div>Wallet Address: {address}</div> }
+      <Heading>{url}</Heading>
+      { address && <Box>Wallet Address: {address}</Box> }
+      { initData && <Box>Username: @{initData?.user?.username}</Box> }
       <Box p={6}>
         <Button onClick={handleOpenScan}>Open Scanner</Button>
         <Button onClick={handleCloseApp}>Close</Button>
