@@ -75,7 +75,7 @@ export default function Home() {
 
   const gradients = {
     'tribalzmarkettest': 'linear(to-r, blue.500, purple.500, purple.500)',
-    'basetonnfts': 'linear(to-r, purple.500, cyan.500, cyan.500)'
+    'basetonnfts': 'linear(to-r, green.500, cyan.500, cyan.500)'
   }
 
   return (
