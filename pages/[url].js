@@ -92,7 +92,7 @@ export default function Home() {
         </Container>
       </Box>
       <Container>
-        <VStack py={6} gap={2}>
+        <VStack py={6} spacing={2}>
           <Heading>{url}</Heading>
           { initData && <Box>Username: @{initData?.user?.username}</Box> }
           { address && <Box>TON Address: {address}</Box> }
