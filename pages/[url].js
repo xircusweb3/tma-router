@@ -92,10 +92,10 @@ export default function Home() {
         </Container>
       </Box>
       <Container>
-      <Heading>{url}</Heading>
-      { address && <Box>Wallet Address: {address}</Box> }
-      { initData && <Box>Username: @{initData?.user?.username}</Box> }
       <VStack p={6} gap={2}>
+        <Heading>{url}</Heading>
+        { address && <Box>Wallet Address: {address}</Box> }
+        { initData && <Box>Username: @{initData?.user?.username}</Box> }
         <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
         <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
       </VStack>
