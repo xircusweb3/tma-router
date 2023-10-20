@@ -13,7 +13,8 @@ const Loader = ({ children }) => {
   }
 
   if (error !== null) {
-    return <Box>Something went wrong</Box>
+    console.log("ERROR", error)
+    return <Box>Something went wrong {error?.message}</Box>
   }
 
   if (components === null) {
