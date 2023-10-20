@@ -92,15 +92,15 @@ export default function Home() {
         </Container>
       </Box>
       <Container>
-      <VStack p={6} gap={2}>
-        <Heading>{url}</Heading>
-        { address && <Box>Wallet Address: {address}</Box> }
-        { initData && <Box>Username: @{initData?.user?.username}</Box> }
-        <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
-        <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
-      </VStack>
-      <Box h={200} />
-      <Center>
+        <VStack py={6} gap={2}>
+          <Heading>{url}</Heading>
+          { initData && <Box>Username: @{initData?.user?.username}</Box> }
+          { address && <Box>TON Address: {address}</Box> }
+          <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
+          <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
+        </VStack>
+        <Box h={200} />
+        <Center>
         <Heading size="sm" mb={4}>Xircus {`<>`} TON Mini Apps</Heading>
       </Center>  
     </Container>    
