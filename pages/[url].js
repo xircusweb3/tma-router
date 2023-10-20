@@ -1,12 +1,14 @@
-import { Box, Button, Container, Divider, Heading, HStack, Spacer } from "@chakra-ui/react"
+import { Box, Button, Center, Container, Divider, Heading, HStack, IconButton, Spacer, useColorMode } from "@chakra-ui/react"
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
 import { useRouter } from 'next/router'
+import { TbSun, TbMoon } from 'react-icons/tb'
 
 export default function Home() {
   const router = useRouter()
 	const [ton] = useTonConnectUI()
 	const wallet = useTonWallet()
   const address = useTonAddress()
+  const { colorMode, toggleColorMode } = useColorMode()
 
   const handleSendTx = () => {
     ton?.sendTransaction({
@@ -33,20 +35,28 @@ export default function Home() {
   }
 
   return (
-    <Container>
-      <HStack py={4}>
-        <Spacer />
-        <TonConnectButton />
-      </HStack>
-      <Heading mb={4}>{router?.query?.url}</Heading>
+    <>
+      <Box bgGradient="linear(to-r, blue.500, purple.500, purple.500)" py={4} color="#fff">
+        <Container>
+          <HStack>
+            <Heading>{router?.query?.url}</Heading>
+            <Spacer />
+            <TonConnectButton />
+            <IconButton 
+              icon={colorMode == 'light' ? <TbMoon /> : <TbSun />} 
+              onClick={toggleColorMode} rounded="full" />
+          </HStack>
+        </Container>
+      </Box>
+      <Container>
       { address && <div>Wallet Address: {address}</div> }
-      <Button onClick={handleDisconnect}>Disconnect</Button>
-      {
-        wallet
-        ? <Button onClick={handleSendTx}>Send Transaction</Button>
-        : <Button onClick={handleConnect}>Connect</Button>
-      }
-      <Heading size="sm" mb={4}>Xircus {`<>`} TON Mini Apps</Heading>
-    </Container>
+      <Box h={200} />
+      <Center>
+        <Heading size="sm" mb={4}>Xircus {`<>`} TON Mini Apps</Heading>
+      </Center>  
+    </Container>    
+    </>
+
+
   )
 }
