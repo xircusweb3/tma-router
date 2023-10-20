@@ -24,7 +24,6 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     viewport?.expand()
     // backButton?.hide()
-    app?.sendData(`@${initData?.user?.username} connects to ${url}`)
     closing?.enableConfirmation()
   }, [])
 
@@ -72,7 +71,12 @@ export default function Home() {
     console.log("QR DATA", data)
   }
 
-  console.log("INIT DATA", initData, mainButton)
+  const handleSendMessage = () => {
+    haptic?.impactOccurred('medium')    
+    app?.sendData(`@${initData?.user?.username} connects to ${url}`)
+  }
+
+  console.log("INIT DATA", initData, mainButton, app)
 
   const gradients = {
     'tribalzmarkettest': 'linear(to-r, blue.500, purple.500, purple.500)',
@@ -99,6 +103,7 @@ export default function Home() {
           { initData && <Box>Username: @{initData?.user?.username}</Box> }
           <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
           <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
+          <Button size="lg" w="full" onClick={handleSendMessage}>Send Bot Message</Button>          
         </VStack>
         <Box h={200} />
         <Center>
