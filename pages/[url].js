@@ -73,9 +73,9 @@ export default function Home() {
 
   const handleSendMessage = () => {
     haptic?.impactOccurred('medium')    
-    app?.sendData(JSON.stringify({
+    app?.sendData({
       data: `@${initData?.user?.username} connects to ${url}`
-    }))
+    })
     // app?.sendData(`Sending message to bot`)
   }
 
