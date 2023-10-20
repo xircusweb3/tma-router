@@ -20,6 +20,7 @@ export default function Home() {
   const backButton = useBackButton()
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     viewport?.expand()
     backButton?.hide()
     closing?.enableConfirmation()
@@ -68,6 +69,8 @@ export default function Home() {
     const data = await scanner?.open()
     console.log("QR DATA", data)
   }
+
+  console.log("INIT DATA", initData, mainButton)
 
   return (
     <>
