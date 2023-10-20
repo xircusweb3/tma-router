@@ -1,8 +1,31 @@
-import { SDKProvider } from '@tma.js/sdk-react'
+import { init } from '@tma.js/sdk'
+import { SDKProvider, useSDK } from '@tma.js/sdk-react'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
-import { ChakraProvider } from '@chakra-ui/react'
+import { Box, ChakraProvider } from '@chakra-ui/react'
+
+const Loader = ({ children }) => {
+  const { didInit, components, error } = useSDK()
+  
+  if (!didInit) {
+    return <Box>SDK Not Init</Box>
+  }
+
+  if (error !== null) {
+    return <Box>Something went wrong</Box>
+  }
+
+  if (components === null) {
+    return <Box>Warming up SDK</Box>
+  }
+
+  return <>{children}</>
+  
+}
 
 function MyApp({ Component, pageProps }) {
+
+
+
   return (
     <ChakraProvider>
       <TonConnectUIProvider 
@@ -12,7 +35,9 @@ function MyApp({ Component, pageProps }) {
         }}
         uiPreferences={{ theme: THEME.DARK }}> 
         <SDKProvider>
-          <Component {...pageProps} />
+          <Loader>
+            <Component {...pageProps} />
+          </Loader>
         </SDKProvider>
       </TonConnectUIProvider>
     </ChakraProvider>

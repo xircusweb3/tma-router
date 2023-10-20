@@ -2,6 +2,7 @@ import { Box, Button, Center, Container, Divider, Heading, HStack, IconButton, S
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
 import { useRouter } from 'next/router'
 import { TbSun, TbMoon } from 'react-icons/tb'
+import { useViewport } from "@tma.js/sdk-react"
 
 export default function Home() {
   const router = useRouter()
@@ -9,6 +10,7 @@ export default function Home() {
 	const wallet = useTonWallet()
   const address = useTonAddress()
   const { colorMode, toggleColorMode } = useColorMode()
+  const viewport = useViewport()
 
   const handleSendTx = () => {
     ton?.sendTransaction({
@@ -34,6 +36,10 @@ export default function Home() {
     ton?.connectWallet()
   }
 
+  const handleExpand = () => {
+    console.log("WEBAPP", viewport)
+  }
+
   return (
     <>
       <Box bgGradient="linear(to-r, blue.500, purple.500, purple.500)" py={4} color="#fff">
@@ -50,6 +56,9 @@ export default function Home() {
       </Box>
       <Container>
       { address && <div>Wallet Address: {address}</div> }
+      <Box p={6}>
+        <Button onClick={handleExpand}>Expand</Button>
+      </Box>
       <Box h={200} />
       <Center>
         <Heading size="sm" mb={4}>Xircus {`<>`} TON Mini Apps</Heading>

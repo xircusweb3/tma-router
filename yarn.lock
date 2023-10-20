@@ -1191,7 +1191,7 @@
     "@tma.js/sdk" "0.12.6"
     "@tma.js/theme-params" "0.0.5"
 
-"@tma.js/sdk@0.12.6":
+"@tma.js/sdk@0.12.6", "@tma.js/sdk@^0.12.6":
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/@tma.js/sdk/-/sdk-0.12.6.tgz#59afaeaf6c2927a4205c356c01c285361ce9ed18"
   integrity sha512-rgsrVsTrslj9ljiYi8wVNIfkWCOgWZB2F+sQXse8ymuzVRh9MlDfkodo84vSEbeQ1ScQOvtWoNYB3v8QqvFE5Q==
