@@ -2,7 +2,7 @@ import { Box, Button, Center, Container, Divider, Heading, HStack, IconButton, S
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
 import { useRouter } from 'next/router'
 import { TbSun, TbMoon } from 'react-icons/tb'
-import { useClosingBehaviour, useHapticFeedback, useInitData, useMainButton, useQRScanner, useViewport, useWebApp } from "@tma.js/sdk-react"
+import { useBackButton, useClosingBehaviour, useHapticFeedback, useInitData, useMainButton, useQRScanner, useViewport, useWebApp } from "@tma.js/sdk-react"
 import { useEffect } from "react"
 
 export default function Home() {
@@ -17,9 +17,11 @@ export default function Home() {
   const haptic = useHapticFeedback()
   const initData = useInitData()
   const closing = useClosingBehaviour()
+  const backButton = useBackButton()
 
   useEffect(() => {
     viewport?.expand()
+    backButton?.hide()
     closing?.enableConfirmation()
   }, [])
 
