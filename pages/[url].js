@@ -109,7 +109,6 @@ export default function Home() {
           { initData && <Box>Username: @{initData?.user?.username}</Box> }
           <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
           <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
-          <Button size="lg" w="full" onClick={handleSendMessage}>Send Bot Message</Button>          
         </VStack>
         <Box h={200} />
         <Center>
