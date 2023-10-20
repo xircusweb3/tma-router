@@ -1,4 +1,4 @@
-import { Box, Button, Center, Container, Divider, Heading, HStack, IconButton, Spacer, useColorMode } from "@chakra-ui/react"
+import { Box, Button, Center, Container, Divider, Heading, HStack, IconButton, List, Spacer, useColorMode, VStack } from "@chakra-ui/react"
 import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "@tonconnect/ui-react"
 import { useRouter } from 'next/router'
 import { TbSun, TbMoon } from 'react-icons/tb'
@@ -95,10 +95,10 @@ export default function Home() {
       <Heading>{url}</Heading>
       { address && <Box>Wallet Address: {address}</Box> }
       { initData && <Box>Username: @{initData?.user?.username}</Box> }
-      <Box p={6}>
-        <Button onClick={handleOpenScan}>Open Scanner</Button>
-        <Button onClick={handleCloseApp}>Close</Button>
-      </Box>
+      <VStack p={6} gap={2}>
+        <Button size="lg" w="full" onClick={handleOpenScan}>Open Scanner</Button>
+        <Button size="lg" w="full" onClick={handleCloseApp}>Close</Button>
+      </VStack>
       <Box h={200} />
       <Center>
         <Heading size="sm" mb={4}>Xircus {`<>`} TON Mini Apps</Heading>
