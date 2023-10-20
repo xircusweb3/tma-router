@@ -3,6 +3,7 @@ import { TonConnectButton, useTonWallet, useTonConnectUI, useTonAddress } from "
 import { useRouter } from 'next/router'
 import { TbSun, TbMoon } from 'react-icons/tb'
 import { useViewport } from "@tma.js/sdk-react"
+import { useEffect } from "react"
 
 export default function Home() {
   const router = useRouter()
@@ -11,6 +12,10 @@ export default function Home() {
   const address = useTonAddress()
   const { colorMode, toggleColorMode } = useColorMode()
   const viewport = useViewport()
+
+  useEffect(() => {
+    viewport?.expand()
+  }, [])
 
   const handleSendTx = () => {
     ton?.sendTransaction({
@@ -38,7 +43,6 @@ export default function Home() {
 
   const handleExpand = () => {
     console.log("WEBAPP", viewport)
-    viewport?.expand()
     console.log("HEIGHT", viewport?.height)
     console.log("WIDTH", viewport?.width)
     console.log("EXPANDED", viewport?.isExpanded)
