@@ -38,6 +38,12 @@ export default function Home() {
 
   const handleExpand = () => {
     console.log("WEBAPP", viewport)
+    viewport?.expand()
+    console.log("HEIGHT", viewport?.height)
+    console.log("WIDTH", viewport?.width)
+    console.log("EXPANDED", viewport?.isExpanded)
+    console.oog("STABLE", viewport?.stableHeight)
+    console.oog("STABLE STATUS", viewport?.isStable)    
   }
 
   return (
