@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
       <TonConnectUIProvider 
         manifestUrl="https://tma-router.vercel.app/tonconnect-manifest.json" 
         actionsConfiguration={{
-          twaReturnUrl: "https://t.me/xircus_test_bot"
+          twaReturnUrl: "https://t.me/xircus_test_bot/tribalzmarkettest"
         }}
         uiPreferences={{ theme: THEME.DARK }}> 
         <SDKProvider>
